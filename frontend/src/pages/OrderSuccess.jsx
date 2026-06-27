@@ -1,9 +1,11 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { HiCheckCircle, HiHome, HiShoppingBag } from 'react-icons/hi2';
 
 const OrderSuccess = () => {
   const { orderId } = useParams();
+  const { isAuthenticated } = useSelector((state) => state.auth);
 
   return (
     <div className="max-w-2xl mx-auto text-center py-16 px-4 space-y-8 animate-scale-in">
@@ -36,13 +38,15 @@ const OrderSuccess = () => {
       )}
 
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto pt-4">
-        <Link
-          to="/my-orders"
-          className="w-full sm:w-auto px-6 py-3.5 bg-primary-650 text-white font-bold rounded-xl gradient-primary hover:opacity-90 transition-opacity flex items-center justify-center space-x-2"
-        >
-          <HiShoppingBag className="w-5 h-5" />
-          <span>View My Orders</span>
-        </Link>
+        {isAuthenticated && (
+          <Link
+            to="/my-orders"
+            className="w-full sm:w-auto px-6 py-3.5 bg-primary-650 text-white font-bold rounded-xl gradient-primary hover:opacity-90 transition-opacity flex items-center justify-center space-x-2"
+          >
+            <HiShoppingBag className="w-5 h-5" />
+            <span>View My Orders</span>
+          </Link>
+        )}
         
         <Link
           to="/"

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCart, clearCart } from '../features/cart/cartSlice';
+import { fetchCart, clearCart, clearGuestCart } from '../features/cart/cartSlice';
 import { createOrder } from '../features/orders/orderSlice';
 import CheckoutForm from '../components/checkout/CheckoutForm';
 import OrderSummary from '../components/checkout/OrderSummary';
@@ -53,22 +53,13 @@ const Checkout = () => {
 
       toast.success('Order placed successfully!');
       
-      // Save guest order ID locally
-      if (!isAuthenticated && order) {
-        try {
-          const guestOrders = JSON.parse(localStorage.getItem('ecommefy_guest_orders') || '[]');
-          const orderMongoId = order._id || order.id;
-          if (orderMongoId && !guestOrders.includes(orderMongoId)) {
-            guestOrders.push(orderMongoId);
-            localStorage.setItem('ecommefy_guest_orders', JSON.stringify(guestOrders));
-          }
-        } catch (saveErr) {
-          console.error('Failed to save guest order ID:', saveErr);
-        }
-      }
-
       // Clear cart locally
-      dispatch(clearCart());
+      if (isAuthenticated) {
+        dispatch(clearCart());
+      } else {
+        dispatch(clearGuestCart());
+      }
+      
       // Navigate to success page
       navigate(`/order-success/${order.orderId || order._id}`);
     } catch (err) {

@@ -35,9 +35,14 @@ app.use(helmet({
 }));
 
 // ─── CORS ─────────────────────────────────────────────
+let clientOrigin = process.env.CLIENT_URL || 'http://localhost:5173';
+if (clientOrigin.endsWith('/')) {
+  clientOrigin = clientOrigin.slice(0, -1);
+}
+
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || 'http://localhost:5173',
+    origin: clientOrigin,
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],

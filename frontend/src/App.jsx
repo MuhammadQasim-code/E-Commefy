@@ -69,7 +69,7 @@ function App() {
           <Route path="checkout" element={<Checkout />} />
           <Route path="order-success/:orderId" element={<OrderSuccess />} />
           <Route path="profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-          <Route path="my-orders" element={<MyOrders />} />
+          <Route path="my-orders" element={<ProtectedRoute><MyOrders /></ProtectedRoute>} />
           
           {/* Wildcard 404 */}
           <Route path="404" element={<NotFound />} />
