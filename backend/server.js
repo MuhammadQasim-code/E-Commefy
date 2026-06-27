@@ -92,10 +92,19 @@ if (process.env.NODE_ENV === 'production') {
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // ─── Root Route ───────────────────────────────────────
-app.get('/', (req, res) => {
+app.all('/', (req, res) => {
   res.status(200).json({
     success: true,
     message: 'Welcome to E-Commefy API Server',
+    status: 'healthy',
+  });
+});
+
+// ─── API Base Route ───────────────────────────────────
+app.all('/api/v1', (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: 'E-Commefy API v1 Base Route',
     status: 'healthy',
   });
 });
