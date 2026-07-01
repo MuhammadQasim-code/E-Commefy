@@ -1,6 +1,6 @@
 # E-Commefy 🛍️
 
-A full-stack e-commerce app built with the MERN-style stack (React + Node/Express + MongoDB). It's got everything a real online store needs — auth, product catalog, cart, wishlist, checkout, and an admin panel for managing it all.
+A full-stack e-commerce app built with the MERN-style stack (React + Node/Express + MongoDB). It's got everything a real online store needs auth, product catalog, cart, wishlist, checkout, and an admin panel for managing it all.
 
 ## Tech Stack
 
@@ -10,13 +10,13 @@ A full-stack e-commerce app built with the MERN-style stack (React + Node/Expres
 
 ## Features
 
-- **Auth** — register, login, logout, protected routes, token-based sessions
-- **Browse & Search** — filters, sorting, pagination, category browsing
-- **Product Pages** — image gallery, reviews, related products
-- **Cart & Wishlist** — persisted to the backend, with stock checks and quantity controls
-- **Checkout** — delivery form, COD or card (simulated), order confirmation
-- **Admin Dashboard** — manage products, categories, users, and orders, plus sales charts
-- **Responsive** — works cleanly on mobile, tablet, and desktop
+- **Auth** : register, login, logout, protected routes, token-based sessions
+- **Browse & Search** : filters, sorting, pagination, category browsing
+- **Product Pages** : image gallery, reviews, related products
+- **Cart & Wishlist** : persisted to the backend, with stock checks and quantity controls
+- **Checkout** : delivery form, COD or card (simulated), order confirmation
+- **Admin Dashboard** : manage products, categories, users, and orders, plus sales charts
+- **Responsive** ; works cleanly on mobile, tablet, and desktop
 
 ## Getting Started
 
